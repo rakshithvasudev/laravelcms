@@ -87,7 +87,9 @@ class AdminPostsController extends Controller
      */
     public function show($id)
     {
-        //
+       
+
+
     }
 
     /**
@@ -98,7 +100,9 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-         return view ('admin.posts.edit');
+         $categories=Category::all();      
+         $post = Post::findOrFail($id);
+         return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories);
     }
 
     /**
@@ -110,8 +114,48 @@ class AdminPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+            $user=Auth::user();
+            $post=Post::findOrFail($id);
+
+        if($file=$request->file('photo_id')){
+
+            $name=time().$file->getClientOriginalName();
+
+               $file->move('images/posts',$name);
+               
+                //$photo = new Photo;
+             
+               if($post->photo_id==0){
+                    
+                 $photo =new Photo;
+                }
+
+               else{
+                $photo =Photo::findOrFail($post->photo_id);
+                 unlink(public_path().$post->photo->file);
+
+               }
+
+                $photo->file=$name;
+                $photo->save();
+                $post->photo_id =$photo->id;
+
+              }
+
+              $post->user_id=Auth::user()->id;
+              $post->title=$request->title;
+              $post->body=$request->body;
+              $post->category_id=$request->category_id;
+              $post->update();
+            
+    return redirect('/admin/posts');
+
     }
+
+
+
+
 
     /**
      * Remove the specified resource from storage.

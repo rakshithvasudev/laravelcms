@@ -36,7 +36,7 @@
                                                 <th>Title</th>
                                                 <th>Owner</th>
                                                 <th>Category ID</th>
-                                                <th>Photo ID</th>
+                                                <th>Photo</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
                                             </tr>
@@ -50,7 +50,7 @@
                                               <td><a href="/admin/posts/{{$post->id}}/edit">{{$post->title}}</a></td>
                                               <td>{{$post->user->name}}</td> 
                                               <td>{{$post->category?$post->category->name:"Uncategorized"}}</td>
-                                              <td><img src="{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}"></td>      
+                                              <td><img height="90" width="125" src="{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}"></td>      
                                               <td>{{$post->created_at->diffForHumans()}}</td>
                                               <td>{{$post->updated_at->diffForHumans()}}</td>
 

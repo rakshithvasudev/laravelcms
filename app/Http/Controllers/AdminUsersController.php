@@ -140,7 +140,16 @@ class AdminUsersController extends Controller
 
             $file->move('images',$name);
 
-          $photo=new Photo;
+          if($user->photo_id==0)
+          {
+                 $photo=new Photo;
+          }  
+         else{
+                 $photo =Photo::findOrFail($user->photo_id);
+                 unlink(public_path().$user->photo->file);
+
+         }
+
           $photo->file=$name;
           $photo->save();
           $user->photo_id=$photo->id;
