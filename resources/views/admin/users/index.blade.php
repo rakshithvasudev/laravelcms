@@ -7,8 +7,8 @@
 
     <div class="container-fluid">
 
-              @if(Session::has('deleted_user'))
-                {{session('deleted_user')}}
+              @if(Session::has('Success_msg'))
+                {{session('Success_msg')}}
               @endif
 
 
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Users <small> Index </small>
+                    Users <small> All </small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">

@@ -179,10 +179,10 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo3"><i class="fa fa-fw fa-table"></i> Categories<i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo3" class="collapse">
                             <li>
-                                <a href="#">All Posts</a>
+                                <a href="{{route('admin.categories.index')}}">All Categories</a>
                             </li>
                             <li>
-                                <a href="#">Create Post</a>
+                                <a href="{{route('admin.categories.create')}}">Create Category</a>
                             </li>
                         </ul>
                     </li>

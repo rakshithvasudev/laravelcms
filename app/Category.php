@@ -11,6 +11,11 @@ class Category extends Model
     'name',
 
 
-
     ];
+
+
+	public function user(){
+		return $this->belongsTo('App\User');
+	}
+
 }
