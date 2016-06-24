@@ -163,8 +163,23 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+         $post=Post::findOrFail($id);
+         if($post->photo_id!=0){
+         unlink(public_path()."/images/posts/".$post->photo->file);
+         }
+        
+         if($post->photo_id!=0){ 
+         $photo=Photo::findOrFail($post->photo_id);
+         $photo->delete();
+         }
+
+         $post->delete();
+
+        $request->session()->flash('Success_msg','The Post was deleted');
+        return redirect('admin/posts');
+
+
     }
 }

@@ -31,7 +31,11 @@
                       
                    <div class="form-group">
                              
-                         <img width=250 class="img-rounded" height=180 src="{{$user->photo?$user->photo->file:'http://placehold.it/350x150'}}">
+                        @if($user->photo)
+                         <img width=250 class="img-rounded" height=180 src="/images/{{$user->photo?$user->photo->file:'http://placehold.it/350x150'}}">
+                         @else
+                        <img width=250 class="img-rounded" height=180 src="http://placehold.it/350x150">                                      
+                         @endif 
                             
                          <p>{{$user->photo?$user->photo->file:'No Profile Photo'}}</p>
                       </div>

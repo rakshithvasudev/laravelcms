@@ -38,7 +38,12 @@
                                     <div class="col-sm-9">
                                       <div class="form-group">
 
-                                          <img width=250 class="img-rounded" height=180 src="{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}">
+                                          @if($post->photo)  
+                                          <img width=250 class="img-rounded" height=180 src="/images/posts/{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}">
+                                          @else
+                                          <img width=250 class="img-rounded" height=180 src="http://placehold.it/350x150">
+                                          @endif
+
                                           <p>{{$post->photo?$post->photo->file:'No Profile Photo'}}</p>
                                           <label for="exampleInputFile">Photo</label>
                                           <input type="file" name="photo_id">
@@ -85,9 +90,16 @@
                                     
                                         <button type="submit" class="btn btn-success">Update Post</button>
 
-                                    </div>   
-                                       
-                                     
+                                       </div>   
+                                 </form>
+
+                               
+                                 <form role="form" action= "/admin/posts/{{$post->id}}"  method="POST">
+                                     <input type="hidden" name="_method" value="DELETE">
+                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                      <div class="form-group">
+                                           <button  type="submit" class="btn btn-danger">Delete Post</button>
+                                      </div>
                                 </form>
 
 

@@ -51,7 +51,13 @@
                                         <tbody>
                                             <tr>
                                               <td>{{$user->id}}</td>
-                                              <td><img width=120 height=100 src="{{$user->photo?$user->photo->file:'http://placehold.it/350x150'}}"></td>
+                                          
+                                             @if($user->photo)
+                                              <td><img width=120 height=100 src="/images/{{$user->photo?$user->photo->file:'http://placehold.it/350x150'}}"></td>
+                                            @else
+                                             <td><img width=120 height=100 src="http://placehold.it/350x150"></td>
+                                            @endif 
+
                                               <td><a href="/admin/users/{{$user->id}}/edit">{{$user->name}}</a></td>
                                               <td>{{$user->email}}</td>
                                               <td>{{$user->role->name}}</td>

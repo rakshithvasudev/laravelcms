@@ -10,10 +10,10 @@ class Photo extends Model
       'file',
     ];
 
-	protected $uploads = '/images/posts/';
+	// protected $uploads = '/images/posts/';
 
-	public function getFileAttribute($photo){
-	 return	$this->uploads.$photo;
-	}
+	// public function getFileAttribute($photo){
+	//  return	$this->uploads.$photo;
+	// }
 
 }

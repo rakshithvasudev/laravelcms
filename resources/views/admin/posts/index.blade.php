@@ -9,6 +9,10 @@
 
     <div class="container-fluid">
 
+                @if(Session::has('Success_msg'))
+                  {{session('Success_msg')}}
+                @endif
+
                                 <!-- Page Heading -->
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -50,7 +54,14 @@
                                               <td><a href="/admin/posts/{{$post->id}}/edit">{{$post->title}}</a></td>
                                               <td>{{$post->user->name}}</td> 
                                               <td>{{$post->category?$post->category->name:"Uncategorized"}}</td>
-                                              <td><img height="90" width="125" src="{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}"></td>      
+                                            
+                                             @if($post->photo)
+                                              <td><img height="90" width="125" src="/images/posts/{{$post->photo->file}}"></td> 
+                                             @else
+                                              <td><img height="90" width="125" src="http://placehold.it/350x150"></td> 
+                                             @endif   
+
+                                             
                                               <td>{{$post->created_at->diffForHumans()}}</td>
                                               <td>{{$post->updated_at->diffForHumans()}}</td>
 
