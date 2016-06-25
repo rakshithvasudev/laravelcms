@@ -1,21 +1,12 @@
 <?php
-
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
-
 use App\User;
 use App\Role;
 use App\Photo;
-
 use App\Http\Requests\UsersEditRequest;
 use App\Http\Requests\UsersCreateRequest;
-
-
-
 class AdminUsersController extends Controller
 {
     /**
@@ -28,7 +19,6 @@ class AdminUsersController extends Controller
         $users = User::all();
         return view('admin.users.index', compact('users'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,11 +26,9 @@ class AdminUsersController extends Controller
      */
     public function create()
     {
-
           $roles = Role::all();
          return view('admin.users.create')->with('roles',$roles);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -56,33 +44,19 @@ class AdminUsersController extends Controller
          $user->name =$request->name;
          $user->email =$request->email;
          $user->password=bcrypt($request->password);
-
-
-
          if($file=$request->file('photo_id')){
-
            $name=time().$file->getClientOriginalName();
-           $file->move('images',$name);
-
+           $file->move(public_path().'/images/users/',$name);
          //  $photo=Photo::create(["file"=>$name]);
          //  $input['photo_id']=$photo->id;
-
           $photo=new Photo;
-          $photo->file=$name;
+          $photo->file="/images/users/".$name;
           $photo->save();
           $user->photo_id=$photo->id;
-
-
-
           }
-
           $user->save();
          return redirect (url('/admin/users'));
-
-
-
     }
-
     /**
      * Display the specified resource.
      *
@@ -93,7 +67,6 @@ class AdminUsersController extends Controller
     {
         //
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -104,10 +77,8 @@ class AdminUsersController extends Controller
     {
          $user= User::findOrFail($id);
          $roles = Role::all();
-
          return view('admin.users.edit')->with('user',$user)->with('roles',$roles);
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -119,7 +90,6 @@ class AdminUsersController extends Controller
     {
         
         $user=User::findOrFail($id);
-
          $user->role_id =$request->role_id;
          $user->is_active =$request->is_active;
          $user->name =$request->name;
@@ -133,13 +103,9 @@ class AdminUsersController extends Controller
              $user->password=User::findOrFail($id)->password;
          }
            
-
          if($file=$request->file('photo_id')){
-
             $name=time().$file->getClientOriginalName();
-
-            $file->move('images',$name);
-
+            $file->move(public_path().'/images/users/',$name);
           if($user->photo_id==0)
           {
                  $photo=new Photo;
@@ -147,21 +113,15 @@ class AdminUsersController extends Controller
          else{
                  $photo =Photo::findOrFail($user->photo_id);
                  unlink(public_path().$user->photo->file);
-
          }
-
-          $photo->file=$name;
+          $photo->file="/images/users/".$name;
           $photo->save();
           $user->photo_id=$photo->id;
-
-
          }
-
      $user->update();
  
      return redirect (url('/admin/users'));
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -173,22 +133,16 @@ class AdminUsersController extends Controller
          $user=User::findOrFail($id);
          
          if($user->photo_id!=0){
-           unlink(public_path()."/images/".$user->photo->file);
+           unlink(public_path().$user->photo->file);
          }
-
    
-
         
          $user->delete();
-
         if($user->photo_id!=0){
          $userphoto=Photo::findOrFail($user->photo->id);
          $userphoto->delete();
         }
-
          $request->session()->flash('deleted_user','The user was deleted');
          return redirect('admin/users');
-
     }
-
 }

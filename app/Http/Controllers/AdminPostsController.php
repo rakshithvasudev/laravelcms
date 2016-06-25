@@ -59,10 +59,10 @@ class AdminPostsController extends Controller
 
             $name=time().$file->getClientOriginalName();
 
-               $file->move('images/posts',$name);
+               $file->move(public_path().'/images/posts/',$name);
                
                 $photo = new Photo;
-                $photo->file=$name;
+                $photo->file="/images/posts/".$name;
                 $photo->save();
                 $post->photo_id =$photo->id;
 
@@ -122,7 +122,7 @@ class AdminPostsController extends Controller
 
             $name=time().$file->getClientOriginalName();
 
-               $file->move('images/posts',$name);
+               $file->move(public_path().'/images/posts/',$name);
                
                 //$photo = new Photo;
              
@@ -137,7 +137,7 @@ class AdminPostsController extends Controller
 
                }
 
-                $photo->file=$name;
+                $photo->file="/images/posts/".$name;
                 $photo->save();
                 $post->photo_id =$photo->id;
 

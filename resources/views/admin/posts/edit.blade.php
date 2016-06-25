@@ -39,7 +39,7 @@
                                       <div class="form-group">
 
                                           @if($post->photo)  
-                                          <img width=250 class="img-rounded" height=180 src="/images/posts/{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}">
+                                          <img width=250 class="img-rounded" height=180 src="{{$post->photo?$post->photo->file:'http://placehold.it/350x150'}}">
                                           @else
                                           <img width=250 class="img-rounded" height=180 src="http://placehold.it/350x150">
                                           @endif

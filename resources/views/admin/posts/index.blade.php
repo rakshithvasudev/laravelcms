@@ -56,7 +56,7 @@
                                               <td>{{$post->category?$post->category->name:"Uncategorized"}}</td>
                                             
                                              @if($post->photo)
-                                              <td><img height="90" width="125" src="/images/posts/{{$post->photo->file}}"></td> 
+                                              <td><img height="90" width="125" src="{{$post->photo->file}}"></td> 
                                              @else
                                               <td><img height="90" width="125" src="http://placehold.it/350x150"></td> 
                                              @endif   
