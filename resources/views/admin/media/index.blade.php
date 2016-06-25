@@ -9,6 +9,10 @@
 
                
 
+             @if(Session::has('Success_msg'))
+                {{session('Success_msg')}}
+              @endif
+
 
         <!-- Page Heading -->
         <div class="row">
@@ -37,6 +41,7 @@
                                                 <th>Name</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
+                                                <th>Delete</th>
                                             </tr>
                                         </thead>
 
@@ -51,6 +56,16 @@
                                                       
                                               <td>{{$photo->created_at->diffForHumans()}}</td>
                                               <td>{{$photo->updated_at->diffForHumans()}}</td>
+                                              
+                                              <td>
+                                                    <form role="form" action= "/admin/media/{{$photo->id}}"  method="POST">
+                                                         <input type="hidden" name="_method" value="DELETE">
+                                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                          <div class="form-group">
+                                                               <button  type="submit" class="btn btn-danger">Delete Photo</button>
+                                                          </div>
+                                                   </form>
+                                              </td>
 
                                             </tr>
                                             @endforeach
@@ -62,6 +77,9 @@
 
 
                             @endif
+
+
+
                                 
                                 <div class="text-right">
                                     <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>

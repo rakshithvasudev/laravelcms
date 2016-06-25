@@ -45,7 +45,7 @@ class AdminMediaController extends Controller
        $name = time().$file->getClientOriginalName();
        $file->move(public_path().'/images/uploads',$name);
 
-       $photo->file="/images/uploads".$name;
+       $photo->file="/images/uploads/".$name;
        $photo->save();
 
 
@@ -91,8 +91,17 @@ class AdminMediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        
+        $photo = Photo::findOrFail($id);
+        $file= $photo->file;
+        unlink(public_path().$file);
+        $photo->delete();
+
+        $request->session()->flash('Success_msg','The Post was deleted');
+        return redirect('admin/media');
+
+
     }
 }
