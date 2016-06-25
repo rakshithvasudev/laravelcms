@@ -1,5 +1,5 @@
  @extends('layouts.admin')
-@section('title','Media')
+@section('title','All Media')
 
 @section('content')
 
