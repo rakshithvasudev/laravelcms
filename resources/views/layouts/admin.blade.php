@@ -200,6 +200,14 @@
                         </ul>
                     </li>
 
+
+                    <li>
+                        <a href="{{route('admin.comments.index')}}" ><i class="fa fa-fw fa-table"></i> Comments</a>
+                        
+                    </li>
+
+
+
                     <li>
                         <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Charts</a>
                     </li>
