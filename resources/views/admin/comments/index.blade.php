@@ -34,6 +34,7 @@
                                             <tr>
                                                 <th>ID</th>
                                                 <th>Name</th>
+                                                <th>Body</th>
                                                 <th>Email</th>
                                                 <th>Post</th>
                                                 <th>Status</th>
@@ -50,6 +51,7 @@
                                             <tr>
                                               <td><a href="/admin/comments/{{$comment->id}}">{{$comment->id}}</a></td>
                                               <td>{{$comment->author}} </td>
+                                              <td>{{$comment->body,30}} </td>
                                               <td>{{$comment->email}}</td>
                                               <td>{{$comment->post->title}} </td>
                                               <td>{{$comment->is_active==1?'Active':'Not Active'}}</td>

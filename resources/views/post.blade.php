@@ -35,7 +35,7 @@
                 <hr>
 
                 <!-- Post Content -->
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+                <p class="lead">Excerpt here</p>
                
                 <p>{{$post->body}}</p>
 
@@ -68,6 +68,7 @@
                 <!-- Comment -->
               @if(count($comments)>0)
                    @foreach($comments as $comment)
+                    @if($comment->is_active==1)
                     <div class="media">
                         <a class="pull-left" href="#">
                             <img width="75" height="75" class="media-object" src="{{$comment->photo}}" alt="">
@@ -79,6 +80,7 @@
                             {{$comment->body}}
                         </div>
                     </div>
+                    @endif
                   @endforeach
             @else
 
@@ -116,12 +118,12 @@
                <!--       </div> 
                         
 
-                </div>
+                </div>-->
      
 
 
                             
-                            </div>-->
+                             
                     </div>
                 </div>
            
