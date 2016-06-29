@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use  Comment;
+use  App\Comment;
+use Auth;
+use DB;
+use App\Post;
 
 class PostCommentController extends Controller
 {
@@ -17,7 +20,8 @@ class PostCommentController extends Controller
      */
     public function index()
     {
-       return view('admin.comments.index');
+       $comments=Comment::all(); 
+       return view('admin.comments.index')->with('comments',$comments);
     }
 
     /**
@@ -38,7 +42,21 @@ class PostCommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+           
+        $user=Auth::user();
+        $comment = new Comment;
+        $comment->post_id=$request->post_id;
+        $comment->author=$user->name;
+        $comment->email=$user->email;
+        $comment->body=$request->body;
+        $comment->photo=$user->photo->file;
+        $comment->save();
+       
+       $request->session()->flash('Success_msg','Your Comment is waiting moderation');
+        return back();
+        
+       
+    
     }
 
     /**
@@ -49,7 +67,13 @@ class PostCommentController extends Controller
      */
     public function show($id)
     {
-        //
+         
+         $post=Post::findOrFail($id);
+        // $comments=DB::table('comments')->where('post_id',$id)->get();
+         $comments=$post->comments;
+          return view('admin.comments.show')->with('comments',$comments)->with('post',$post);
+        
+
     }
 
     /**
@@ -60,7 +84,8 @@ class PostCommentController extends Controller
      */
     public function edit($id)
     {
-        //
+         $comment=Comment::findOrFail($id);
+         return view('admin.comments.editcomments')->with('comment',$comment);
     }
 
     /**
@@ -72,7 +97,10 @@ class PostCommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+     
+     Comment::findOrFail($id)->update($request->all());
+     return redirect('/admin/comments');
+
     }
 
     /**
@@ -83,6 +111,9 @@ class PostCommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+      
+      Comment::findOrFail($id)->delete();
+      return redirect('/admin/comments');
+
     }
 }

@@ -43,6 +43,8 @@
                                                 <th>Photo</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
+                                                <th>View Post</th>
+                                                <th>View Comments</th>
                                             </tr>
                                         </thead>
 
@@ -64,8 +66,12 @@
                                              
                                               <td>{{$post->created_at->diffForHumans()}}</td>
                                               <td>{{$post->updated_at->diffForHumans()}}</td>
-
+                                              <td><a _target="blank" href="/post/{{$post->id}}">{{$post->title}}</td>
+                                              <td><a href="/admin/comments/{{$post->id}}">View Comments</td>
                                             </tr>
+                                         
+                                            </tr>
+
                                             @endforeach
                                           @endif
                                         </tbody>

@@ -14,7 +14,7 @@ use App\User;
 
 use App\Category;
 
-
+use  App\Comment;
 
 use App\Http\Requests\PostsCreateRequest;
 use Auth;
@@ -185,8 +185,10 @@ class AdminPostsController extends Controller
  
   public function post($id){
 
+     
     $post=Post::findOrFail($id);
-    return view('post')->with('post',$post);
+    $comments=$post->comments;
+    return view('post')->with('post',$post)->with('comments',$comments);
 
   }
 }

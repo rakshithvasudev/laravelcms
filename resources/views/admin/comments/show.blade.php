@@ -16,11 +16,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Comments <small> All </small>
+                    Comments <small> for </small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">
-                        <i class="fa fa-dashboard"></i> Comments Available
+                         {{$post->title}}
                     </li>
                 </ol>
             </div>
@@ -35,7 +35,6 @@
                                                 <th>ID</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Post</th>
                                                 <th>Status</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
@@ -51,7 +50,6 @@
                                               <td><a href="/admin/comments/{{$comment->id}}">{{$comment->id}}</a></td>
                                               <td>{{$comment->author}} </td>
                                               <td>{{$comment->email}}</td>
-                                              <td>{{$comment->post->title}} </td>
                                               <td>{{$comment->is_active==1?'Active':'Not Active'}}</td>
                                               <td>{{$comment->created_at->diffForHumans()}}</td>
                                               <td>{{$comment->updated_at->diffForHumans()}}</td>

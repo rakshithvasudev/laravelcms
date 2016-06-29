@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+ @extends('layouts.admin')
 @section('title','Users')
 
 @section('content')
@@ -57,25 +57,13 @@
                                               <td>{{$comment->updated_at->diffForHumans()}}</td>
                                               <td> 
 
-                                              @if($comment->is_active==0)
-                                                  <form role="form" action= "/admin/comments/{{$comment->id}}"  method="POST">
-                                                      <input type="hidden" name="_method" value="PATCH">
+                                                  <form role="form" action= "/admin/comments/{{$comment->id}}"  method="GET">
                                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                             <input type="hidden" name="is_active" value="1">
                                                               <div class="form-group">
                                                                    <button  type="submit" class="btn btn-success">Approve</button>
                                                               </div>
                                                  </form>
-                                            @else
-                                                <form role="form" action= "/admin/comments/{{$comment->id}}"  method="POST">
-                                                       <input type="hidden" name="_method" value="PATCH">
-                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                             <input type="hidden" name="is_active" value="0">
-                                                              <div class="form-group">
-                                                                   <button  type="submit" class="btn btn-info">Un-Approve</button>
-                                                              </div>
-                                                 </form>
-                                            @endif
+
                                               </td>
                                               <td> 
 
