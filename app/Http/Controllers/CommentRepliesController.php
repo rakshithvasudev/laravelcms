@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use  App\CommentReply;
+
+use Auth;
+
 class CommentRepliesController extends Controller
 {
     /**
@@ -37,6 +41,27 @@ class CommentRepliesController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+   
+   public function createReply(Request $request)
+    {
+            
+
+        $user=Auth::user();
+        $commentreply = new CommentReply;
+        $commentreply->comment_id=$request->comment_id;
+        $commentreply->author=$user->name;
+        $commentreply->email=$user->email;
+        $commentreply->body=$request->body;
+        $commentreply->photo=$user->photo->file;
+        $commentreply->save();
+       
+       $request->session()->flash('Success_msg','Your Reply for Comment is Waiting Moderation');
+        return back();
+        
+       
+
     }
 
     /**

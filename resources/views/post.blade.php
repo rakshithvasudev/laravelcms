@@ -78,8 +78,38 @@
                                 <small>{{$comment->created_at->diffForHumans()}}</small>
                             </h4>
                             {{$comment->body}}
-                        </div>
+                            
+                             
+                            @foreach($comment->replies as $reply)
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="{{$reply->photo}}" alt="" width="75" height="75">
+                                    </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading">{{$reply->author}}
+                                                <small>{{$reply->created_at->diffForHumans()}}</small>
+                                            </h4>
+                                         {{$reply->body}}
+                                        </div>
+                                </div>  
+                            @endforeach
+                             
+                                 <form role="form" action="{{url('comment/reply')}}" method="POST">
+                                     <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                                      <input type="hidden" name="comment_id" value="{{$comment->id}}" />
+                                      
+                                        <div class="form-group">
+                                            <textarea name="body" class="form-control" rows="3"></textarea>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                  </form>
+                           
+                        
+                       </div>
                     </div>
+
+                      
                     @endif
                   @endforeach
             @else
