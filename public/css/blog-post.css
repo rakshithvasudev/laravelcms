@@ -1,1 +1,16 @@
 body { padding-top: 70px; }
+
+.nested-comment{
+	padding-top: 60px;
+
+}
+
+.form-setup{
+
+	padding-bottom: 50px;
+}
+
+.comment-reply{
+display: none;
+
+}

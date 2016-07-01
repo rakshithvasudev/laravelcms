@@ -30,8 +30,8 @@
                 @if($post->photo)
                 <img class="img-responsive" src="{{$post->photo->file}}" alt="">
                @else 
-    			 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-    			 @endif
+                 <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                 @endif
                 <hr>
 
                 <!-- Post Content -->
@@ -80,8 +80,10 @@
                             {{$comment->body}}
                             
                              
+                         @if(count($comment->replies)>0)
                             @foreach($comment->replies as $reply)
-                                <div class="media">
+                             <div class="comment-reply-container"> 
+                                <div class="nested-comment media" >
                                     <a class="pull-left" href="#">
                                         <img class="media-object" src="{{$reply->photo}}" alt="" width="75" height="75">
                                     </a>
@@ -91,10 +93,13 @@
                                             </h4>
                                          {{$reply->body}}
                                         </div>
-                                </div>  
+                                </div> 
+                             </div>   
                             @endforeach
+                          @endif 
+                                 
                              
-                                 <form role="form" action="{{url('comment/reply')}}" method="POST">
+                                <form class="form-setup" role="form" action="{{url('comment/reply')}}" method="POST">
                                      <input type="hidden" name="_token" value="{{csrf_token()}}" />
                                       <input type="hidden" name="comment_id" value="{{$comment->id}}" />
                                       
@@ -103,8 +108,8 @@
                                         </div>
                                         
                                         <button type="submit" class="btn btn-primary">Submit</button>
-                                  </form>
-                           
+                                  </form>  
+                         
                         
                        </div>
                     </div>
@@ -120,39 +125,7 @@
             @endif
            
             
-                <!-- Comment -->
-              <!--   <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="{{$comment->photo}}" alt="">
-                    </a>
-
-
-                    <div class="media-body">
-                        <h4 class="media-heading">{{$comment->author}}
-                            <small>{{$comment->created_at->diffForHumans()}}</small>
-                        </h4>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.   -->
-                        <!-- Nested Comment -->
-                          <!-- <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>  -->
-                        <!-- End Nested Comment -->
-               <!--       </div> 
-                        
-
-                </div>-->
-     
-
-
-                            
+                                   
                              
                     </div>
                 </div>

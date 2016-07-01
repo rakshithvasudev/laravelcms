@@ -18,6 +18,10 @@ use  App\Comment;
 
 use App\Http\Requests\PostsCreateRequest;
 use Auth;
+use DB;
+
+
+
 
 class AdminPostsController extends Controller
 {
@@ -183,13 +187,15 @@ class AdminPostsController extends Controller
 
     }
  
-  public function post($id){
+  public function post($slug){
 
      
-    $post=Post::findOrFail($id);
+    //$post=Post::findOrFail($id);
+      $post=Post::findBySlugOrFail($slug);
+   // $comments=DB::table('comments')->where('post_id',$id)->get();
     $comments=$post->comments()->whereIsActive(1)->get();
+   return view('post')->with('post',$post)->with('comments',$comments);
 
-    return view('post')->with('post',$post)->with('comments',$comments);
-
+//return  $comments;
   }
 }
