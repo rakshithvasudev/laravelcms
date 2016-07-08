@@ -193,8 +193,9 @@ class AdminPostsController extends Controller
     //$post=Post::findOrFail($id);
       $post=Post::findBySlugOrFail($slug);
    // $comments=DB::table('comments')->where('post_id',$id)->get();
+      $categories=Category::orderBy('id', 'desc')->get();
     $comments=$post->comments()->whereIsActive(1)->get();
-   return view('post')->with('post',$post)->with('comments',$comments);
+   return view('post')->with('post',$post)->with('comments',$comments)->with('categories',$categories);
 
 //return  $comments;
   }

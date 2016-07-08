@@ -39,7 +39,7 @@
                                                 <th>Photo</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
-                                                <th>Role</th>
+                                                <th>Roles</th>
                                                 <th>Status</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
