@@ -20,6 +20,7 @@ use App\Http\Requests\PostsCreateRequest;
 use Auth;
 use DB;
 
+use Flash;
 
 
 
@@ -32,7 +33,7 @@ class AdminPostsController extends Controller
      */
     public function index()
     {
-       $posts=Post::all();
+       $posts=Post::all()->paginate(15);
        return view ('admin.posts.index')->with('posts',$posts);
     }
 
@@ -78,6 +79,7 @@ class AdminPostsController extends Controller
               $post->category_id=$request->category_id;
               $post->save();
               
+      flash()->success('Post Created Successfully');        
       
       return redirect('/admin/posts/');
 
@@ -171,7 +173,7 @@ class AdminPostsController extends Controller
     {
          $post=Post::findOrFail($id);
          if($post->photo_id!=0){
-         unlink(public_path()."/images/posts/".$post->photo->file);
+         unlink(public_path().$post->photo->file);
          }
         
          if($post->photo_id!=0){ 
@@ -193,9 +195,9 @@ class AdminPostsController extends Controller
     //$post=Post::findOrFail($id);
       $post=Post::findBySlugOrFail($slug);
    // $comments=DB::table('comments')->where('post_id',$id)->get();
-      $categories=Category::orderBy('id', 'desc')->get();
+      $categories=Category::groupBy('id')->having('id', '>', 0)->get();
     $comments=$post->comments()->whereIsActive(1)->get();
-   return view('post')->with('post',$post)->with('comments',$comments)->with('categories',$categories);
+   return view('post')->with('post',$post)->with('comments',$comments);
 
 //return  $comments;
   }

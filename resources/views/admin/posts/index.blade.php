@@ -9,9 +9,7 @@
 
     <div class="container-fluid">
 
-                @if(Session::has('Success_msg'))
-                  {{session('Success_msg')}}
-                @endif
+               @include('flash::message')
 
                                 <!-- Page Heading -->
                                 <div class="row">
@@ -84,6 +82,9 @@
 
 
 
+ {{$posts->links() }}
+
+
 
 
   </div>
@@ -93,3 +94,6 @@
 <!-- /#page-wrapper -->
 
 @stop
+
+
+
