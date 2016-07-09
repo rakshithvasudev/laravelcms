@@ -16,6 +16,7 @@ use App\Category;
 
 use  App\Comment;
 
+use App\Tag;
 use App\Http\Requests\PostsCreateRequest;
 use Auth;
 use DB;
@@ -31,10 +32,11 @@ class AdminPostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-       $posts=Post::all()->paginate(15);
-       return view ('admin.posts.index')->with('posts',$posts);
+       $posts=Post::paginate(5);
+       return view('admin.posts.index')->with('posts',$posts);
     }
 
     /**
@@ -44,8 +46,9 @@ class AdminPostsController extends Controller
      */
     public function create()
     {
-      $categories=Category::all();
-      return view ('admin.posts.create')->with('categories',$categories);
+          $categories=Category::all();
+          $tags=Tag::all();
+          return view ('admin.posts.create')->with('categories',$categories)->with('tags',$tags);
     }
 
     /**
@@ -57,10 +60,18 @@ class AdminPostsController extends Controller
     public function store(PostsCreateRequest $request)
     {
 
+
+     
+
+     
         $user=Auth::user();
         $post=new Post;
 
+
+
         if($file=$request->file('photo_id')){
+
+
 
             $name=time().$file->getClientOriginalName();
 
@@ -78,7 +89,7 @@ class AdminPostsController extends Controller
               $post->body=$request->body;
               $post->category_id=$request->category_id;
               $post->save();
-              
+              $post->tags()->attach($request->tags);
       flash()->success('Post Created Successfully');        
       
       return redirect('/admin/posts/');
@@ -106,9 +117,12 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
-         $categories=Category::all();      
-         $post = Post::findOrFail($id);
-         return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories);
+            $categories=Category::all();      
+            $post = Post::findOrFail($id);
+            $tags=Tag::all();
+            return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories)->with('tags',$tags);
+
+      //return $post->tags->name->toArray();
     }
 
     /**
@@ -155,7 +169,16 @@ class AdminPostsController extends Controller
               $post->category_id=$request->category_id;
               $post->update();
             
-    return redirect('/admin/posts');
+                 if(empty($post->tags->toArray())){
+                  $post->tags()->attach($request->tags);
+                }
+                else{
+                  $post->tags()->detach($post->tags);
+                  $post->tags()->attach($request->tags);
+                }
+                
+              flash()->success('Post Edited Successfully');     
+              return redirect('/admin/posts');
 
     }
 
@@ -183,7 +206,7 @@ class AdminPostsController extends Controller
 
          $post->delete();
 
-        $request->session()->flash('Success_msg','The Post was deleted');
+        flash()->success('Post Deleted Successfully');     
         return redirect('admin/posts');
 
 
@@ -196,8 +219,8 @@ class AdminPostsController extends Controller
       $post=Post::findBySlugOrFail($slug);
    // $comments=DB::table('comments')->where('post_id',$id)->get();
       $categories=Category::groupBy('id')->having('id', '>', 0)->get();
-    $comments=$post->comments()->whereIsActive(1)->get();
-   return view('post')->with('post',$post)->with('comments',$comments);
+      $comments=$post->comments()->whereIsActive(1)->get();
+      return view('post')->with('post',$post)->with('comments',$comments);
 
 //return  $comments;
   }

@@ -9,7 +9,8 @@
 
     <div class="container-fluid">
 
-               
+               <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
                                 <!-- Page Heading -->
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -58,17 +59,31 @@
                                           <label>Description:</label>
                                           <textarea name="body" class="form-control" rows="8" id="comment"></textarea>
                                         </div>
+
+                                         
+
+
+
+                                      <div class="form-group"> 
+                                       <label>Tags:</label>
+                                        <select class="selectpicker" multiple data-selected-text-format="count"  name="tags[]" class="form-control">
+                                           @foreach($tags as $tag)
+                                             <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                           @endforeach
+                                        </select>
+                                      </div>  
                                         
-                                       
+                            
+
                                        <button type="submit" class="btn btn-default">Create Post</button>
                                 </form>
 
 
+                                 
 
-
- 
-
-
+        
+            <script src="{{asset('js/jquery.js')}}"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
 
   </div>
   <!-- /.container-fluid -->

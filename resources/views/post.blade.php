@@ -41,6 +41,16 @@
 
                 <hr>
 
+                <h3>Tags</h3>
+                  <ul>
+                    @foreach($post->tags as $tag)
+                     <li>{{$tag->name}}</li>
+                     @endforeach
+                  </ul>
+
+                <hr>
+
+                <h3>Comment</h3>
                 <!-- Blog Comments -->
               @if(Session::has('Success_msg'))
                 {{session('Success_msg')}}
