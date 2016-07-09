@@ -9,7 +9,8 @@
 
     <div class="container-fluid">
 
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+
                                 <!-- Page Heading -->
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -92,19 +93,22 @@
 
                                     <div class="form-group"> 
                                        <label>Tags:</label>
-                                        <select  class="selectpicker" multiple data-selected-text-format="count"  name="tags[]" class="form-control">   @foreach($tags as $tag)
-                                             <option value="{{$tag->id}}">{{$tag->name}}</option>
-                                           @endforeach
+                                        <select  class="selectpicker" multiple data-selected-text-format="count" name="tags[]" class="form-control"> 
+                                          
+                                            @foreach($tags_list as $tag_list)
+                                               <option value="{{$tag_list->id}}">{{$tag_list->name}}</option>
+                                            @endforeach
+                                        
                                         </select>
                                     </div>  
+                                    
 
-                                   
                                  <button type="submit" class="btn btn-success">Update Post</button>
 
-                                       </div>   
+                                         
                                  </form>
 
-                               
+                             
                                  <form role="form" action= "/admin/posts/{{$post->id}}"  method="POST">
                                      <input type="hidden" name="_method" value="DELETE">
                                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -113,7 +117,17 @@
                                       </div>
                                 </form>
 
+
+
+
  
+
+ 
+
+
+
+
+
  
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>

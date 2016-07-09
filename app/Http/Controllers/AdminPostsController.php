@@ -47,8 +47,8 @@ class AdminPostsController extends Controller
     public function create()
     {
           $categories=Category::all();
-          $tags=Tag::all();
-          return view ('admin.posts.create')->with('categories',$categories)->with('tags',$tags);
+          $tags_list=Tag::all();
+          return view ('admin.posts.create')->with('categories',$categories)->with('tags_list',$tags_list);
     }
 
     /**
@@ -119,10 +119,10 @@ class AdminPostsController extends Controller
     {
             $categories=Category::all();      
             $post = Post::findOrFail($id);
-            $tags=Tag::all();
-            return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories)->with('tags',$tags);
+            $tags_list=Tag::all();
+            return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories)->with('tags_list',$tags_list);
 
-      //return $post->tags->name->toArray();
+      
     }
 
     /**
@@ -168,14 +168,10 @@ class AdminPostsController extends Controller
               $post->body=$request->body;
               $post->category_id=$request->category_id;
               $post->update();
-            
-                 if(empty($post->tags->toArray())){
-                  $post->tags()->attach($request->tags);
-                }
-                else{
-                  $post->tags()->detach($post->tags);
-                  $post->tags()->attach($request->tags);
-                }
+              $post->tags()->sync($request->tags);
+                
+                
+                  
                 
               flash()->success('Post Edited Successfully');     
               return redirect('/admin/posts');

@@ -9,7 +9,9 @@
         "laravel/framework": "5.2.*",
         "cviebrock/eloquent-sluggable": "4.0.2",
         "laravelcollective/html": "5.2.*",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+      
+ 
     },
        
 

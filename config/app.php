@@ -162,7 +162,7 @@ return [
         Cviebrock\EloquentSluggable\ServiceProvider::class,
         App\Providers\CategoryServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-
+        Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -212,7 +212,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
-
+ 
 
     ],
 

@@ -67,13 +67,13 @@
                                       <div class="form-group"> 
                                        <label>Tags:</label>
                                         <select class="selectpicker" multiple data-selected-text-format="count"  name="tags[]" class="form-control">
-                                           @foreach($tags as $tag)
-                                             <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                           @foreach($tags_list as $tag_list)
+                                             <option value="{{$tag_list->id}}">{{$tag_list->name}}</option>
                                            @endforeach
                                         </select>
                                       </div>  
                                         
-                            
+
 
                                        <button type="submit" class="btn btn-default">Create Post</button>
                                 </form>
