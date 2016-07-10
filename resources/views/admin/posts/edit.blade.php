@@ -8,8 +8,8 @@
 <div id="page-wrapper">
 
     <div class="container-fluid">
+      
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
 
                                 <!-- Page Heading -->
                                 <div class="row">
@@ -69,7 +69,7 @@
 
                                                             @foreach($categories as $category)
                                                                  @if($category->id!=$post->category_id)     
-                                                                     <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                   <option value="{{$category->id}}">{{$category->name}}</option>
                                                                  @endif
                                                             @endforeach
                                                   
@@ -93,7 +93,7 @@
 
                                     <div class="form-group"> 
                                        <label>Tags:</label>
-                                        <select  class="selectpicker" multiple data-selected-text-format="count" name="tags[]" class="form-control"> 
+                                        <select  id="tag_list_select"  name="tags[]" class="form-control multiple" multiple="multiple"> 
                                           
                                             @foreach($tags_list as $tag_list)
                                                <option value="{{$tag_list->id}}">{{$tag_list->name}}</option>
@@ -117,21 +117,21 @@
                                       </div>
                                 </form>
 
-
-
-
- 
-
  
 
 
+@section('footer')
+  <script type="text/javascript">
+    
+    $("#tag_list_select").select2({
+     tags: true
+   })
 
-
+  </script>
+@endsection
+ 
 
  
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
-
   </div>
   <!-- /.container-fluid -->
 

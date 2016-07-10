@@ -13,6 +13,7 @@
 
     <!-- Gulp Compiled  CSS -->
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" >
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -235,6 +236,8 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
+    
+   <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
     <script src="{{asset('js/jquery.js')}}"></script>
 
     <!-- Gulp Compiled JavaScript  which is not working-->
@@ -246,6 +249,11 @@
     <script src="{{asset('js/plugins/morris/raphael.min.js')}}"></script>
     <script src="{{asset('js/plugins/morris/morris.min.js')}}"></script>
     <script src="{{asset('js/plugins/morris/morris-data.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+ 
+@yield('footer')
+
+
 
 </body>
 
