@@ -88,8 +88,11 @@ class AdminPostsController extends Controller
               $post->title=$request->title;
               $post->body=$request->body;
               $post->category_id=$request->category_id;
+              $post->storedtags_ids=implode(",",$request->tags);
               $post->save();
               $post->tags()->attach($request->tags);
+             
+
       flash()->success('Post Created Successfully');        
       
       return redirect('/admin/posts/');
@@ -117,8 +120,11 @@ class AdminPostsController extends Controller
      */
     public function edit($id)
     {
+
+
             $categories=Category::all();      
             $post = Post::findOrFail($id);
+           
             $tags_list=Tag::all();
             return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories)->with('tags_list',$tags_list);
 
@@ -167,12 +173,11 @@ class AdminPostsController extends Controller
               $post->title=$request->title;
               $post->body=$request->body;
               $post->category_id=$request->category_id;
+              $post->storedtags_ids=implode(",",$request->tags);
               $post->update();
               $post->tags()->sync($request->tags);
                 
-                
-                  
-                
+                      
               flash()->success('Post Edited Successfully');     
               return redirect('/admin/posts');
 

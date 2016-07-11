@@ -96,7 +96,7 @@
                                         <select  id="tag_list_select"  name="tags[]" class="form-control multiple" multiple="multiple"> 
                                           
                                             @foreach($tags_list as $tag_list)
-                                               <option value="{{$tag_list->id}}">{{$tag_list->name}}</option>
+                                              <option  value="{{$tag_list->id}}">{{$tag_list->name}}</option>
                                             @endforeach
                                         
                                         </select>
@@ -122,10 +122,11 @@
 
 @section('footer')
   <script type="text/javascript">
-    
-    $("#tag_list_select").select2({
-     tags: true
+     $("#tag_list_select").select2({
+     tags: true    
    })
+
+
 
   </script>
 @endsection
