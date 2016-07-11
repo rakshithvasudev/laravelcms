@@ -124,9 +124,11 @@ class AdminPostsController extends Controller
 
             $categories=Category::all();      
             $post = Post::findOrFail($id);
-           
+            $post_tags_ids=explode(",",$post->storedtags_ids);
             $tags_list=Tag::all();
-            return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories)->with('tags_list',$tags_list);
+            return view ('admin.posts.edit')->with('post',$post)->with('categories',$categories)->with('tags_list',$tags_list)->with('post_tags_ids',$post_tags_ids);
+
+
 
       
     }

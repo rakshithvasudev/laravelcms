@@ -91,16 +91,20 @@
                    
                                
 
-                                    <div class="form-group"> 
-                                       <label>Tags:</label>
-                                        <select  id="tag_list_select"  name="tags[]" class="form-control multiple" multiple="multiple"> 
-                                          
-                                            @foreach($tags_list as $tag_list)
-                                              <option  value="{{$tag_list->id}}">{{$tag_list->name}}</option>
-                                            @endforeach
-                                        
-                                        </select>
-                                    </div>  
+                                <div class="form-group"> 
+                                 <label>Tags:</label>
+                                  <select  id="tag_list_select"  name="tags[]" class="form-control multiple" multiple="multiple"> 
+                                 
+                                 
+                                    
+                                    @for ($i = 0; $i < count($post_tags_ids); $i++)
+                                     @foreach($tags_list as $tag_list)
+                                   <option {{$post_tags_ids[$i]==$tag_list->id?'selected':''}} value="{{$tag_list->id}}">{{$tag_list->name}}</option>
+                                    
+                                      @endforeach
+                                     @endfor
+                                    </select>
+                                </div>  
                                     
 
                                  <button type="submit" class="btn btn-success">Update Post</button>
