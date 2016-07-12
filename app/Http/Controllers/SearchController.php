@@ -10,6 +10,12 @@ use App\Post;
 
 use App\Tag;
 
+use App\Http\Requests\SearchRequest;
+
+use App\Category;
+
+
+
 class SearchController extends Controller
 {
     public function search(Request $request){
@@ -23,4 +29,23 @@ class SearchController extends Controller
     	return view('search.search')->with('postresults',$postresults)->with('tagresults',$tagresults)->with('searchterm',$searchterm);
 
     }
+
+
+
+
+  public function searchcategory($categoryslug){
+
+  
+  $category=Category::findBySlugOrFail($categoryslug);
+
+  $categoryname=$category->name;
+
+  $categoryresults=Post::whereCategoryId($category->id)->get();
+
+  return view('search.categorysearch')->with('categoryresults',$categoryresults)->with('categoryname',$categoryname);
+
+  }
+
+
+
 }

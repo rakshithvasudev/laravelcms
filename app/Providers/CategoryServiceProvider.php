@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Category;
+use App\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class CategoryServiceProvider extends ServiceProvider
@@ -17,7 +18,7 @@ class CategoryServiceProvider extends ServiceProvider
 
         view()->composer('layouts.blog-post', function($view){
 
-            $view->with('categories',Category::all());
+            $view->with('categories',Category::all())->with('tags',Tag::all());
 
         });
 

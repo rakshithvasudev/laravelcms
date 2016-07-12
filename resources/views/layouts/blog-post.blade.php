@@ -106,7 +106,7 @@
                             <ul class="list-unstyled">                            
                               
                               @for($i=0; $i<(count($categories))/2; $i++)
-                                <li><a href="#">{{$categories[$i]->name}}</a>
+                                <li><a href="/category/{{$categories[$i]->slug}}">{{$categories[$i]->name}}</a>
                                 </li>
                               @endfor
                           
@@ -115,11 +115,11 @@
                         </div>
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                                                      
+                                                   
                               
                               @for($i=(count($categories))/2; $i<count($categories); $i++)
 
-                                <li><a href="#">{{$categories[$i]->name}}</a>
+                                <li><a href="/category/{{$categories[$i]->slug}}">{{$categories[$i]->name}}</a>
                                 </li>
                                 
                               @endfor
@@ -133,7 +133,32 @@
                 <!-- Side Widget Well -->
                 <div class="well">
                     <h4>Tags Available</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                      <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">                            
+                              
+                              @for($i=0; $i<(count($tags))/2; $i++)
+                                <li><a href="#">{{$tags[$i]->name}}</a>
+                                </li>
+                              @endfor
+                          
+                                
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                                   
+                              
+                              @for($i=(count($tags))/2; $i<count($tags); $i++)
+
+                                <li><a href="#">{{$tags[$i]->name}}</a>
+                                </li>
+                                
+                              @endfor
+
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
             </div>

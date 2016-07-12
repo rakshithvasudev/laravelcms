@@ -40,6 +40,7 @@
                                                 <th>Owner</th>
                                                 <th>Created</th>
                                                 <th>Updated</th>
+                                                <th>Slug</th>
                                             </tr>
                                         </thead>
 
@@ -56,7 +57,7 @@
                                               @endif
                                               <td>{{$category->created_at->diffForHumans()}}</td>
                                               <td>{{$category->updated_at->diffForHumans()}}</td>
-
+                                              <td>{{$category->slug}}</td>
                                             </tr>
                                             @endforeach
                                           @endif
