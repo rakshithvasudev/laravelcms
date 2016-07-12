@@ -99,7 +99,8 @@
                                     
                                     @for ($i = 0; $i < count($post_tags_ids); $i++)
                                      @foreach($tags_list as $tag_list)
-                                   <option {{$post_tags_ids[$i]==$tag_list->id?'selected':''}} value="{{$tag_list->id}}">{{$tag_list->name}}</option>
+                                 
+                                   <option {{$tag_list->id==$post_tags_ids[$i]?'selected':''}} value="{{$tag_list->id}}">{{$tag_list->name}}</option>
                                     
                                       @endforeach
                                      @endfor
@@ -124,17 +125,14 @@
  
 
 
-@section('footer')
-  <script type="text/javascript">
-     $("#tag_list_select").select2({
-     tags: true    
-   })
-
-
-
-  </script>
-@endsection
- 
+      @section('footer')
+        <script type="text/javascript">
+           $("#tag_list_select").select2({
+           tags: true    
+         })
+        </script>
+      @endsection
+       
 
  
   </div>

@@ -146,7 +146,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="{{url('admin')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
 
 
@@ -209,21 +209,7 @@
 
 
 
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Charts</a>
-                    </li>
-
-
-                  <li>
-                      <a href="bootstrap-grid.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                 </li>
-
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> UI Elements</a>
-                    </li>
+                     
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
