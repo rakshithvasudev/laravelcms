@@ -1,4 +1,4 @@
-@extends('layouts.fileupload')
+@extends('layouts.admin')
 @section('title','Upload Media')
 
  
