@@ -81,13 +81,14 @@
 
 
                                 
-                                <div class="text-right">
-                                    <a href="#">View All Transactions <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
+                                 {{$photos->links() }}
+                                 
                             </div>
                     </div>
                 </div>
            
   
+
+
 
 @endsection

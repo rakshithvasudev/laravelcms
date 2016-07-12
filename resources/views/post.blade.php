@@ -34,9 +34,7 @@
                  @endif
                 <hr>
 
-                <!-- Post Content -->
-                <p class="lead">Excerpt here</p>
-               
+                
                 <p>{{$post->body}}</p>
 
                 <hr>

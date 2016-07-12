@@ -225,6 +225,5 @@ class AdminPostsController extends Controller
       $comments=$post->comments()->whereIsActive(1)->get();
       return view('post')->with('post',$post)->with('comments',$comments);
 
-//return  $comments;
-  }
+   }
 }

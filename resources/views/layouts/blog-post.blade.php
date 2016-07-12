@@ -96,24 +96,31 @@
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
                                
-                              @foreach($categories as $category) 
-                                <li><a href="#">{{$category->name}}</a>
+                              
+                           
+                              
+                              @for($i=0;$i<(count($categories))/2; $i++)
+
+                                <li><a href="#">{{$categories[$i]->name}}</a>
                                 </li>
-                              @endforeach
+                                
+                              @endfor
+                          
                                 
                             </ul>
                         </div>
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
                             
-                                <li><a href="#">Category Name</a>
+                            
+                              
+                              @for($i=(count($categories))/2  ;$i<count($categories); $i++)
+
+                                <li><a href="#">{{$categories[$i]->name}}</a>
                                 </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
-                                <li><a href="#">Category Name</a>
-                                </li>
+                                
+                              @endfor
+
                             </ul>
                         </div>
                     </div>
