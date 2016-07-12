@@ -223,7 +223,8 @@ class AdminPostsController extends Controller
    // $comments=DB::table('comments')->where('post_id',$id)->get();
       $categories=Category::groupBy('id')->having('id', '>', 0)->get();
       $comments=$post->comments()->whereIsActive(1)->get();
-      return view('post')->with('post',$post)->with('comments',$comments);
+      $tags=Tag::all();
+      return view('post')->with('post',$post)->with('comments',$comments)->with('tags',$tags);
 
    }
 }

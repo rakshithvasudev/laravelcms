@@ -40,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Admin Section</a>
+                <a class="navbar-brand" href="{{url('admin')}}">Admin Section</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">

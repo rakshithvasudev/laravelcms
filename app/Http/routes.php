@@ -24,7 +24,8 @@ Route::get('/admin', function(){
 
 
 Route::get('/post/{id}',['as'=>'home.post','uses'=>'AdminPostsController@post']);
- 
+Route::get('/search/','SearchController@search'); 
+
 
  
 Route::group(['middleware'=>'admin'], function(){

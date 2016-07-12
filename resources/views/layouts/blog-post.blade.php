@@ -39,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Rakshith Blog</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -54,11 +54,35 @@
                         <a href="#">Contact</a>
                     </li>
                 </ul>
+
+                 
+                 
+                   
+                <div class="col-sm-3 col-md-3">
+                     <form class="navbar-form" role="search" action="/search" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search" name="searchquery">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              
+
+          
+
+          
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
+
+
+ 
+
 
     <!-- Page Content -->
     <div class="container">
@@ -74,36 +98,16 @@
 
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-4">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
-
-                <!-- Blog Categories Well -->
+              <!-- Blog Categories Well -->
                 <div class="well">
                     <h4>Blog Categories</h4>
                     <div class="row">
                         <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                               
+                            <ul class="list-unstyled">                            
                               
-                           
-                              
-                              @for($i=0;$i<(count($categories))/2; $i++)
-
+                              @for($i=0; $i<(count($categories))/2; $i++)
                                 <li><a href="#">{{$categories[$i]->name}}</a>
                                 </li>
-                                
                               @endfor
                           
                                 
@@ -111,10 +115,9 @@
                         </div>
                         <div class="col-lg-6">
                             <ul class="list-unstyled">
-                            
-                            
+                                                      
                               
-                              @for($i=(count($categories))/2  ;$i<count($categories); $i++)
+                              @for($i=(count($categories))/2; $i<count($categories); $i++)
 
                                 <li><a href="#">{{$categories[$i]->name}}</a>
                                 </li>
@@ -129,7 +132,7 @@
 
                 <!-- Side Widget Well -->
                 <div class="well">
-                    <h4>Side Widget Well</h4>
+                    <h4>Tags Available</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
                 </div>
 
@@ -144,7 +147,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; Rakshith 2016</p>
                 </div>
             </div>
             <!-- /.row -->
