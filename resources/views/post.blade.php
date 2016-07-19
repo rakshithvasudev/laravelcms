@@ -16,7 +16,7 @@
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#">{{$post->user->name}}</a>
+                    by <a href="/user/{{$post->user->slug}}">{{$post->user->name}}</a>
                 </p>
 
                 <hr>

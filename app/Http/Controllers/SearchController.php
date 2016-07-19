@@ -14,6 +14,8 @@ use App\Http\Requests\SearchRequest;
 
 use App\Category;
 
+use App\User;
+
 
 
 class SearchController extends Controller
@@ -47,14 +49,14 @@ class SearchController extends Controller
   }
 
 
- public function searchauthor($author){
+ public function searchuser($userslug){
 
   
-  $author=User::findorFail($author);
+  $user=User::findBySlugOrFail($userslug);
 
-  $authorpostresults=$author->posts()->get();
-
-  return view('search.categorysearch')->with('categoryresults',$categoryresults)->with('categoryname',$categoryname);
+  $posts=$user->posts;
+ 
+  return view('search.usersearch')->with('posts',$posts)->with('user',$user);
 
   }
 
