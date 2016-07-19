@@ -27,8 +27,11 @@ class SearchController extends Controller
     	$postresults=Post::where('title','LIKE','%'.$searchterm.'%')->orWhere('body','LIKE','%'.$searchterm.'%')->get();
 
    		$tagresults=Tag::where('name','LIKE','%'.$searchterm.'%')->get();
+
+      $userresults=User::where('name','LIKE','%'.$searchterm.'%')->get();
+
  
-    	return view('search.search')->with('postresults',$postresults)->with('tagresults',$tagresults)->with('searchterm',$searchterm);
+    	return view('search.search')->with('postresults',$postresults)->with('tagresults',$tagresults)->with('searchterm',$searchterm)->with( 'userresults',$userresults);
 
     }
 

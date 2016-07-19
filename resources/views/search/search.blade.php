@@ -14,7 +14,7 @@
                 <div class="ibox-content">
             
                     <h2>
-                   {{count($postresults)}} Post(s) & {{count($tagresults)}} Tag(s)   Results found for: <span class="text-navy">"{{$searchterm}}"</span>
+                   {{count($postresults)}} Post(s) & {{count($tagresults)}} Tag(s)  & {{count($userresults)}} User(s)   Results found for: <span class="text-navy">"{{$searchterm}}"</span>
                     </h2>
                     
                
@@ -44,6 +44,19 @@
                         </div>
                         @endforeach
                     <div class="hr-line-dashed"></div>
+
+                   <div class="hr-line-dashed"></div>
+                        <h2>Users</h2>
+                        @foreach($userresults as $userresult)
+                        <div class="search-result">
+                            <h3><a href="/user/{{$userresult->slug}}">{{$userresult->name}}</a></h3>
+                            <a href="#" class="search-link">http://localhost:8000/user/{{$userresult->slug}}</a>
+                            <p>
+                           None yet
+                            </p>
+                        </div>
+                        @endforeach
+                    <div class="hr-line-dashed"></div> 
                   
                 </div>
             </div>
