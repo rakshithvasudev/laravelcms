@@ -26,7 +26,7 @@
                                     <h3><a href="/post/{{$categoryresult->slug}}">{{$categoryresult->title}}</a></h3>
                                     <a href="/post/{{$categoryresult->slug}}" class="search-link">http://localhost:8000/post/{{$categoryresult->slug}}</a>
                                     <p>
-                                    {{$categoryresult->body,30}}
+                                    {{str_limit($categoryresult->body,$limit = 100,$end = '...')}}
                                     </p>
                                 </div>
                             @endforeach

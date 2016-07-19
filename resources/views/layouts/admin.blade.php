@@ -208,7 +208,18 @@
                         
                     </li>
 
-
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Tags <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="{{route('admin.media.index')}}">All Tags</a>
+                            </li>
+                            <li>
+                                <a href="{{route('admin.media.create')}}">Upload Media </a>
+                            </li>
+                        </ul>
+                    </li>
+                   
 
                      
                 </ul>

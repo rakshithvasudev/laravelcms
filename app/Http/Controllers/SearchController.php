@@ -47,5 +47,19 @@ class SearchController extends Controller
   }
 
 
+ public function searchauthor($author){
+
+  
+  $author=User::findorFail($author);
+
+  $authorpostresults=$author->posts()->get();
+
+  return view('search.categorysearch')->with('categoryresults',$categoryresults)->with('categoryname',$categoryname);
+
+  }
+
+
+
+
 
 }
